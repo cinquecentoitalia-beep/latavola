@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>La Tavola Italiana NYC · Italian Eatery & Market</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f1e7;
+      --bg-soft: #fdf9f2;
+      --bg-card: #fffaf2;
+      --text: #2f2620;
+      --muted: #7c6b5d;
+      --accent: #c9753e;
+      --accent-dark: #a1582b;
+      --accent-soft: #f1c8a0;
+      --border: #e1d3c3;
+      --radius-lg: 22px;
+      --radius-xl: 30px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.12);
+      --shadow-card: 0 14px 30px rgba(125, 96, 67, 0.18);
+      --nav-height: 76px;
+      --transition: 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #fdf4e5 0, #f6f1e7 45%, #f0e7db 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Top Banner */
+
+    .top-banner {
+      background: linear-gradient(90deg, #d7965a, #c9753e);
+      color: #fdf7ec;
+      padding: 8px 18px;
+      font-size: 13px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-banner span.badge {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(250, 234, 210, 0.9);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    /* NAVBAR */
+
+    .nav-shell {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(246, 241, 231, 0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(165, 138, 104, 0.16);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 18px;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 18px;
+      border: 2px solid rgba(163, 115, 66, 0.9);
+      background: radial-gradient(circle at 30% 20%, #ffe6c4, #e2b48a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Playfair Display", serif;
+      font-size: 17px;
+      color: #4b3323;
+      box-shadow: 0 8px 18px rgba(99, 70, 40, 0.25);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .brand-name {
+      font-family: "Playfair Display", serif;
+      font-size: 17px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-link {
+      padding: 8px 4px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform var(--transition);
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(161, 118, 77, 0.5);
+      background: linear-gradient(135deg, #fdf4e6, #f3dac0);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+    }
+
+    .nav-cta:hover {
+      box-shadow: 0 12px 28px rgba(160, 111, 74, 0.35);
+      transform: translateY(-1px);
+      background: linear-gradient(135deg, #fbead6, #f0d1b1);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(135, 104, 72, 0.4);
+      background: #f8efe4;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      color: #6f5337;
+    }
+
+    /* MAIN LAYOUT */
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 18px 80px;
+    }
+
+    section {
+      margin-bottom: 72px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      min-height: 420px;
+      box-shadow: var(--shadow-soft);
+      background:
+        linear-gradient(120deg, rgba(32, 22, 9, 0.72), rgba(61, 44, 26, 0.6)),
+        url("2.jpg") center/cover no-repeat;
+      color: #fdf6e9;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.1fr);
+    }
+
+    .hero-inner {
+      padding: 32px 32px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f7dcbc;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 4vw, 40px);
+      line-height: 1.15;
+      margin: 8px 0 6px;
+    }
+
+    .hero-title span {
+      color: #ffe7c2;
+    }
+
+    .hero-tagline {
+      font-size: 15px;
+      max-width: 420px;
+      color: #f9e9d4;
+    }
+
+    .hero-tagline strong {
+      font-weight: 600;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      border-radius: 999px;
+      padding: 4px 9px;
+      border: 1px solid rgba(251, 224, 196, 0.7);
+      background: rgba(38, 25, 11, 0.55);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 18px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition), color var(--transition), border var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f8d197, #f1b06b);
+      color: #3e240d;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
+    }
+
+    .btn-ghost {
+      background: rgba(34, 21, 10, 0.6);
+      border-color: rgba(252, 227, 204, 0.7);
+      color: #ffe9cc;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(34, 21, 10, 0.8);
+    }
+
+    .hero-meta {
+      font-size: 12px;
+      color: #f7ddc0;
+    }
+
+    .hero-meta strong {
+      font-weight: 600;
+    }
+
+    .hero-side {
+      padding: 22px 20px 22px 0;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    .hero-card {
+      background: rgba(251, 241, 229, 0.96);
+      border-radius: 22px;
+      width: 100%;
+      max-width: 320px;
+      padding: 10px;
+      color: var(--text);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-image-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(179, 141, 92, 0.5);
+    }
+
+    .hero-card-body {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: #4b3723;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .hero-pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(176, 124, 63, 0.65);
+      font-size: 11px;
+      background: #fff8ee;
+    }
+
+    /* ABOUT / CONCEPT */
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      margin-top: 24px;
+    }
+
+    .lead {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .list {
+      margin-left: 18px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .list li {
+      margin-bottom: 6px;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 12px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .about-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .about-title {
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .about-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* MENU PREVIEW */
+
+    .menu-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .menu-card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+      box-shadow: 0 10px 24px rgba(128, 99, 68, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .menu-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .menu-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .menu-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .menu-meta {
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 6px;
+    }
+
+    .menu-price {
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    .menu-badge {
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f3dfc7;
+      color: #6b4022;
+    }
+
+    .menu-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* MARKET */
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 22px;
+      margin-top: 22px;
+      align-items: stretch;
+    }
+
+    .market-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 16px 14px;
+      box-shadow: 0 10px 24px rgba(128, 99, 68, 0.12);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(166, 125, 82, 0.45);
+      background: #fbead8;
+      color: #6a4930;
+    }
+
+    /* EXPERIENCE */
+
+    .experience-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .exp-card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+      box-shadow: 0 10px 22px rgba(128, 99, 68, 0.08);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .exp-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #4b341f;
+    }
+
+    .exp-icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    /* VISIT */
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+      align-items: start;
+    }
+
+    .info-table {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      gap: 10px;
+    }
+
+    .info-label {
+      font-weight: 500;
+      color: #4e3b2a;
+    }
+
+    .map-placeholder {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: repeating-linear-gradient(
+        135deg,
+        #f8ebdd,
+        #f8ebdd 10px,
+        #f2e1d0 10px,
+        #f2e1d0 20px
+      );
+      padding: 12px;
+      box-shadow: 0 10px 26px rgba(138, 109, 78, 0.18);
+    }
+
+    .map-inner {
+      background: #fffdf7;
+      border-radius: 14px;
+      border: 1px dashed rgba(184, 143, 103, 0.6);
+      padding: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .map-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #4d341f;
+    }
+
+    /* SOCIAL & CONTACT */
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .social-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(167, 129, 90, 0.5);
+      background: #fff9f0;
+      font-size: 13px;
+      cursor: pointer;
+      transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
+    }
+
+    .social-chip span.icon {
+      font-size: 16px;
+    }
+
+    .social-chip:hover {
+      box-shadow: 0 10px 22px rgba(126, 96, 71, 0.25);
+      transform: translateY(-1px);
+      background: #f6ebdd;
+    }
+
+    .newsletter {
+      margin-top: 18px;
+      font-size: 13px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .newsletter-input {
+      flex: 1 1 180px;
+      min-width: 0;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(162, 130, 90, 0.45);
+      background: #fffdf8;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .newsletter-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(171, 119, 70, 0.6);
+      background: linear-gradient(135deg, #f8d299, #f0b16d);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .newsletter-btn:hover {
+      box-shadow: 0 10px 24px rgba(132, 98, 67, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(167, 136, 100, 0.4);
+      padding: 16px 18px 22px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: 0;
+      }
+      .hero-side {
+        display: none;
+      }
+      .split,
+      .market-grid,
+      .visit-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .experience-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        padding-inline: 14px;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: calc(var(--nav-height) + 4px) 14px auto 14px;
+        background: rgba(248, 240, 229, 0.98);
+        border-radius: 18px;
+        box-shadow: 0 18px 40px rgba(97, 74, 49, 0.35);
+        flex-direction: column;
+        padding: 10px 14px;
+        gap: 8px;
+        transform-origin: top right;
+        transform: scale(0.94);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition), transform var(--transition);
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: all;
+      }
+
+      .nav-cta {
+        align-self: stretch;
+        justify-content: center;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .hero-inner {
+        padding: 26px 22px 26px;
+      }
+
+      .menu-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .experience-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <span class="badge">New York City · Upper West Side</span>
+    <span>Opening soon — be the first to taste our gourmet panini.</span>
+  </div>
+
+  <!-- NAVBAR -->
+  <div class="nav-shell">
+    <nav class="nav">
+      <div class="nav-left">
+        <div class="brand-mark">LT</div>
+        <div class="brand-text">
+          <div class="brand-name">La Tavola Italiana</div>
+          <div class="brand-tagline">Italian Eatery &amp; Market</div>
+        </div>
+      </div>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#concept" class="nav-link">Our Story</a>
+        <a href="#menu" class="nav-link">Panini &amp; Boards</a>
+        <a href="#market" class="nav-link">Market</a>
+        <a href="#visit" class="nav-link">Visit</a>
+        <a href="#contact" class="nav-cta">Order (soon)</a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </nav>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-kicker">Benvenuti a La Tavola Italiana · NYC</div>
+          <h1 class="hero-title">
+            Gourmet panini, Italian boards &amp; wine —
+            <span>without the white tablecloth.</span>
+          </h1>
+          <p class="hero-tagline">
+            A <strong>fast-fine Italian eatery &amp; market</strong> where you can grab a
+            perfectly toasted panino in minutes, sit down under warm lights, and
+            take home the very ingredients used in our kitchen.
+          </p>
+          <div class="hero-tags">
+            <span class="hero-tag">Gourmet panini</span>
+            <span class="hero-tag">Bruschette &amp; sharing boards</span>
+            <span class="hero-tag">Italian pantry to-go</span>
+          </div>
+        </div>
+        <div>
+          <div class="hero-cta-row">
+            <a href="#menu" class="btn btn-primary">View signature panini</a>
+            <a href="#visit" class="btn btn-ghost">Find us in Manhattan</a>
+          </div>
+          <p class="hero-meta">
+            <strong>Opening soon</strong> on the West Side — premium perception,
+            without the price of a full-service restaurant.
+          </p>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="hero-card">
+          <div class="hero-image-wrap">
+            <!-- Interior render -->
+            <img src="1.jpg" alt="Warm Italian interior of La Tavola Italiana" />
+          </div>
+          <div class="hero-card-body">
+            <div class="hero-card-title">Inside La Tavola Italiana</div>
+            <p>
+              Shelves of wine, cured meats and bread, marble bistro tables and
+              a glowing counter of panini &amp; pastries. Designed for everyday
+              moments that feel a little special.
+            </p>
+            <div class="hero-highlights">
+              <span class="hero-pill">Eat-in &amp; take-away</span>
+              <span class="hero-pill">Restaurant-quality, fast service</span>
+              <span class="hero-pill">Smart NYC pricing</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- CONCEPT -->
+    <section id="concept">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">An Italian eatery &amp; market in one cozy space</h2>
+      <p class="section-subtitle">
+        Born from a leading Italian food company known for pre-cooked meals, cured meats
+        and artisan bread, La Tavola Italiana brings the idea of
+        <strong>“simple food, beautifully served”</strong> to the heart of New York City.
+      </p>
+
+      <div class="split">
+        <div>
+          <p class="lead">
+            We believe you shouldn’t have to choose between a quick bite at the counter
+            and a long, expensive dinner. Our flagship blends the
+            <strong>speed of street food</strong> with the <strong>warmth of a trattoria</strong>.
+          </p>
+          <ul class="list">
+            <li><strong>Simple eat-in offer</strong>: gourmet panini, bruschette and Italian boards.</li>
+            <li><strong>Premium retail corner</strong> with sauces, oils, cured meats and fresh bread to take home.</li>
+            <li><strong>Fast-fine format</strong>: everything prepared in minutes, without compromising quality.</li>
+            <li><strong>Designed for NYC</strong>: counter service, casual seating, all-day opening.</li>
+          </ul>
+        </div>
+
+        <div class="about-card">
+          <div class="about-tag">Flagship snapshot</div>
+          <div class="about-title">La Tavola Italiana · West Side, Manhattan</div>
+          <p class="about-note">
+            • Around 35–40 seats inside + a few outdoor tables.<br />
+            • All-day menu from morning focaccia to evening aperitivo.<br />
+            • Guests can discover, taste and then buy the products they love.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU PREVIEW -->
+    <section id="menu">
+      <div class="section-label">Panini &amp; Boards</div>
+      <h2 class="section-title">High-quality, simple dishes in a beautiful environment</h2>
+      <p class="section-subtitle">
+        We keep the menu intentionally compact: a curated selection of
+        <strong>gourmet panini</strong>, sharing boards and Italian classics that travel well from
+        kitchen to table — or box to subway seat.
+      </p>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <div class="menu-tag">Signature Panino</div>
+          <div class="menu-name">Prosciutto &amp; Fig</div>
+          <p class="menu-desc">
+            Warm ciabatta, 18-month prosciutto crudo, stracchino cheese,
+            fig mostarda and rocket.
+          </p>
+          <div class="menu-meta">
+            <span class="menu-price">$14.50</span>
+            <span class="menu-badge">Best-seller</span>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-tag">Classic Panino</div>
+          <div class="menu-name">Parmigiana Melt</div>
+          <p class="menu-desc">
+            Toasted focaccia, breaded eggplant, tomato ragù, basil pesto
+            and melted mozzarella fiordilatte.
+          </p>
+          <div class="menu-meta">
+            <span class="menu-price">$12.90</span>
+            <span class="menu-badge">Vegetarian</span>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-tag">Modern Panino</div>
+          <div class="menu-name">Truffle Mortadella</div>
+          <p class="menu-desc">
+            Sesame bun, roasted mortadella, whipped ricotta, black truffle
+            cream and pistachio crumble.
+          </p>
+          <div class="menu-meta">
+            <span class="menu-price">$15.20</span>
+            <span class="menu-badge">NYC favorite</span>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-tag">Sharing Board</div>
+          <div class="menu-name">La Tavola Board</div>
+          <p class="menu-desc">
+            Selection of cured meats, cheeses, olives, homemade pickles,
+            warm bread and seasonal spreads.
+          </p>
+          <div class="menu-meta">
+            <span class="menu-price">$26.00</span>
+            <span class="menu-badge">For 2–3 people</span>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-tag">Bruschette</div>
+          <div class="menu-name">Rustica Trio</div>
+          <p class="menu-desc">
+            Three artisan bruschette: classic tomato &amp; basil, roasted pepper
+            &amp; stracciatella, mushroom &amp; pecorino.
+          </p>
+          <div class="menu-meta">
+            <span class="menu-price">$11.80</span>
+            <span class="menu-badge">Perfect to share</span>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="menu-tag">Dolci &amp; Coffee</div>
+          <div class="menu-name">Espresso &amp; Cornetto</div>
+          <p class="menu-desc">
+            Italian espresso pulled to order with a freshly baked
+            cornetto filled with seasonal cream.
+          </p>
+          <div class="menu-meta">
+            <span class="menu-price">$6.50</span>
+            <span class="menu-badge">Morning combo</span>
+          </div>
+        </article>
+      </div>
+
+      <p class="menu-note">
+        Full menu (including wine &amp; aperitivo boards) will be available on-site and,
+        soon, on our online ordering page.
+      </p>
+    </section>
+
+    <!-- MARKET -->
+    <section id="market">
+      <div class="section-label">Market Corner</div>
+      <h2 class="section-title">Take the Italian pantry home with you</h2>
+      <p class="section-subtitle">
+        Our shelves mirror the walls of the store: olive oils, sauces, cured meats,
+        fresh bread and ready-to-heat meals from our mother company’s best-selling lines.
+      </p>
+
+      <div class="market-grid">
+        <div class="market-card">
+          <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:6px;">
+            Eat, love, repeat at home
+          </h3>
+          <p style="font-size:14px; color:var(--muted); margin-bottom:8px;">
+            Every product behind the counter has a twin on the shelf. If you fall in love
+            with a panino, you can buy the bread, the cured meat, the spread and recreate
+            it in your own kitchen.
+          </p>
+          <ul class="list">
+            <li>Artisan breads and focacce baked throughout the day.</li>
+            <li>Ready-to-heat lasagne, parmigiana and seasonal oven dishes.</li>
+            <li>Olive oils, pestos and sauces selected from regional Italian producers.</li>
+            <li>Wines that pair perfectly with our panini &amp; boards.</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">Taste first, then buy</span>
+            <span class="pill">Perfect for gifts</span>
+            <span class="pill">Authentic Italian brands</span>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <div class="about-tag">Why a market?</div>
+          <div class="about-title">More than a quick bite</div>
+          <p class="about-note">
+            La Tavola Italiana is not just a stop between meetings. It’s a place where
+            New Yorkers discover new products and build their own Italian ritual, whether
+            that’s a Sunday lasagna or a Tuesday night panino on the couch.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE / FORMAT -->
+    <section id="experience">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Fast-fine: our way of dining in NYC</h2>
+      <p class="section-subtitle">
+        We took the best of restaurant, deli and street food formats to design an experience
+        that feels premium but stays relaxed, quick and accessible.
+      </p>
+
+      <div class="experience-grid">
+        <div class="exp-card">
+          <div class="exp-icon">⏱️</div>
+          <div class="exp-title">Restaurant-quality, deli speed</div>
+          <p>
+            From order to first bite in just a few minutes. Panini are assembled and toasted
+            to order, boards are built fresh behind the counter — no full table service needed.
+          </p>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon">💡</div>
+          <div class="exp-title">Premium perception, smart price</div>
+          <p>
+            Warm lights, natural wood and marble tables create a cozy, Instagram-ready
+            atmosphere. Prices remain in line with everyday NYC lunches, not special-occasion dinners.
+          </p>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon">🥖</div>
+          <div class="exp-title">All-day, neighborhood place</div>
+          <p>
+            Espresso on your way to work, quick lunch, aperitivo with friends, or a last-minute
+            bottle of wine and bread on your way home — the space adapts to every moment of the day.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section id="visit">
+      <div class="section-label">Visit Us</div>
+      <h2 class="section-title">Find La Tavola Italiana in New York</h2>
+      <p class="section-subtitle">
+        Our first flagship store is opening on the West Side of Manhattan, in a lively
+        neighborhood that mixes locals, offices and visitors.
+      </p>
+
+      <div class="visit-grid">
+        <div>
+          <p class="lead">
+            We’re a few minutes away from subway lines and surrounded by parks, offices and
+            residential streets — easy to reach for a quick lunch or a slow aperitivo.
+          </p>
+
+          <div class="info-table">
+            <div class="info-row">
+              <span class="info-label">Address</span>
+              <span>Columbus Ave &amp; W 72nd St · Upper West Side · NYC</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Subway</span>
+              <span>1 · 2 · 3 at 72 St — a short walk away</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Opening hours</span>
+              <span>Mon–Fri 8:00–22:00 · Sat–Sun 9:00–23:00</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Contact</span>
+              <span>hello@latavolanyc.com · +1 (000) 000-0000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-placeholder">
+          <div class="map-inner">
+            <div class="map-title">Map placeholder</div>
+            <p>
+              This box represents the map of our location in Manhattan.<br />
+              In a real deployment, this space will host an embedded interactive map
+              (e.g. Google Maps) centered on La Tavola Italiana NYC.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & SOCIAL -->
+    <section id="contact">
+      <div class="section-label">Stay in touch</div>
+      <h2 class="section-title">Follow our table online</h2>
+      <p class="section-subtitle">
+        While the ovens warm up in New York, follow our journey on social media —
+        from recipe testing in Italy to behind-the-scenes of the flagship opening.
+      </p>
+
+      <div class="social-row">
+        <!-- NOTE: i link sono fittizi, puoi sostituirli con quelli reali -->
+        <a href="https://instagram.com/latavola.nyc" target="_blank" rel="noopener" class="social-chip">
+          <span class="icon">📸</span>
+          <span>Instagram · @latavola.nyc</span>
+        </a>
+        <a href="https://www.tiktok.com/@latavola.nyc" target="_blank" rel="noopener" class="social-chip">
+          <span class="icon">🎵</span>
+          <span>TikTok · @latavola.nyc</span>
+        </a>
+        <a href="https://x.com/latavola_nyc" target="_blank" rel="noopener" class="social-chip">
+          <span class="icon">✕</span>
+          <span>X · @latavola_nyc</span>
+        </a>
+      </div>
+
+      <div class="newsletter">
+        <p>Sign up to get a note when we open the doors and launch online ordering.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Demo only — form not connected.');">
+          <input type="email" class="newsletter-input" placeholder="Your email address" />
+          <button type="submit" class="newsletter-btn">Join the list</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> La Tavola Italiana NYC · Concept website for presentation purposes.
+  </footer>
+
+  <script>
+    // Mobile nav
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close nav when clicking a link on mobile
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
